@@ -15,5 +15,11 @@ export class Converter {
     const parsed = parseFloat(value);
     this.store.amount.set(isNaN(parsed) ? 0 : parsed);
   }
-
+  toggleCurrency() {
+    const current = this.store.currency();
+    const previousOutput = this.store.converted();
+    const newCurrency = current === 'EUR' ? 'USD' : 'EUR';
+    this.store.currency.set(newCurrency);
+    this.store.amount.set(previousOutput);
+  }
 }

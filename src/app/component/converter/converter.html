@@ -13,4 +13,9 @@
     Résultat : {{ store.converted() | number:'1.2-2' }}
     {{ store.currency() === 'EUR' ? 'USD' : 'EUR' }}
   </h3>
+
+  <br>
+    <button (click)="toggleCurrency()">
+    Devise : {{ store.currency() }}
+  </button>
 </div>
