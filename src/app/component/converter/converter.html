@@ -18,4 +18,13 @@
     <button (click)="toggleCurrency()">
     Devise : {{ store.currency() }}
   </button>
+
+  <br>
+  <br>
+    <input
+    type="number"
+    [value]="store.fixedRate() || ''"
+    (input)="onFixedRateChange($event.target.value)"
+    placeholder="Fixer un taux (optionnel)"
+  />
 </div>

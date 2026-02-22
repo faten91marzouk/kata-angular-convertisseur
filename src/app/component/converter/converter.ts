@@ -22,4 +22,9 @@ export class Converter {
     this.store.currency.set(newCurrency);
     this.store.amount.set(previousOutput);
   }
+
+  onFixedRateChange(value: string) {
+    const parsed = parseFloat(value);
+    this.store.fixedRate.set(isNaN(parsed) ? null : parsed);
+  }
 }
