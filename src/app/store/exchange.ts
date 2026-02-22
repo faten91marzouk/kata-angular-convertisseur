@@ -22,12 +22,22 @@ export class Exchange {
   });
 
 
-    constructor() {
+  constructor() {
     interval(3000).subscribe(() => {
       const variation = (Math.random() * 0.1) - 0.05; 
       this.rate.update(r => +(r + variation).toFixed(4));
     });
 
-  
-}
+    effect(() => {
+      const real = this.rate();
+      const fixed = this.fixedRate();
+
+      if (fixed !== null) {
+        const diff = Math.abs(real - fixed) / fixed;
+        if (diff > 0.02) {
+          this.fixedRate.set(null);
+        }
+      }
+    });
+  }
 }

@@ -27,4 +27,12 @@
     (input)="onFixedRateChange($event.target.value)"
     placeholder="Fixer un taux (optionnel)"
   />
+
+    <br>
+  <br>
+@if (store.fixedRate() !== null) {
+  <small>
+    Taux fixe actif : {{ store.fixedRate() }}
+  </small>
+}
 </div>
