@@ -1,1 +1,16 @@
-<p>converter works!</p>
+<div class="converter">
+  <h2>Convertisseur EUR / USD</h2>
+  <p>Taux actuel : {{ store.rate() | number:'1.4-4' }}</p>
+  <input
+    type="number"
+    [value]="store.amount()"
+    (input)="onAmountChange($event.target.value)"
+    placeholder="Entrez le montant"
+  />
+<br>
+<br>
+  <h3>
+    Résultat : {{ store.converted() | number:'1.2-2' }}
+    {{ store.currency() === 'EUR' ? 'USD' : 'EUR' }}
+  </h3>
+</div>
