@@ -40,4 +40,18 @@ export class Exchange {
       }
     });
   }
+  addToHistory() {
+    const newEntry = {
+      rateReal: this.rate(),          
+      rateUsed: this.activeRate(),   
+      inputValue: this.amount(),      
+      inputCurrency: this.currency(), 
+      outputValue: this.converted(),  
+      outputCurrency: this.currency() === 'EUR' ? 'USD' : 'EUR' 
+    };
+
+    const updated = [newEntry, ...this.history()]; 
+    this.history.set(updated.slice(0, 5));        
+
+}
 }

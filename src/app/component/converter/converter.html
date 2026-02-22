@@ -35,4 +35,20 @@
     Taux fixe actif : {{ store.fixedRate() }}
   </small>
 }
+
+<br>
+<br>
+<button (click)="addToHistory()">
+    Ajouter à l'historique
+</button>
+<div class="history">
+    <ul>
+       <h4>Historique (5 dernières conversions)</h4>
+      <li *ngFor="let entry of store.history()">
+        {{ entry.inputValue | number:'1.2-2' }} {{ entry.inputCurrency }}
+        → {{ entry.outputValue | number:'1.2-2' }} {{ entry.outputCurrency }}
+        (Taux utilisé : {{ entry.rateUsed | number:'1.4-4' }}, Taux réel : {{ entry.rateReal | number:'1.4-4' }})
+      </li>
+    </ul>
+</div>
 </div>

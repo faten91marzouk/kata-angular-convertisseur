@@ -27,4 +27,8 @@ export class Converter {
     const parsed = parseFloat(value);
     this.store.fixedRate.set(isNaN(parsed) ? null : parsed);
   }
+
+  addToHistory() {
+    this.store.addToHistory();
+  }
 }
